@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   AppApiUrl : "http://localhost:3000/",
   marvelApiUrl :"https://gateway.marvel.com:443/v1/public/",
-  marvelPublicKey :"cab7ae7a765e5f07862b254663bca526",
-  marvelPrivateKey :"ddb4e3de31a28cd9e7d7482923dd328658f41c9e"
+  marvelPublicKey :"MARVEL_PUBLIC_KEY",
+  marvelPrivateKey :"MARVEL_PRIVATE_KEY"
 };
 
 /*
