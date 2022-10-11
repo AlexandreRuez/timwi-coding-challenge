@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="thumbnail-wrapper">
+        <img src="{{hero.thumbnail.path + '.' + hero.thumbnail.extension}}" />
+    </div>
+    <div class="content">
+        <p class="name">{{hero.name}}</p>
+        <p class="description">{{hero.description == "" ? "No description" : hero.description}}</p>
+    </div>
+    <div class="btn-wrapper" *ngIf="userConnected">
+        <button *ngIf="!inSuperteam" class="add-btn" (click)="addHero(hero.id)">
+            <span>+</span>
+            Ajouter
+        </button>
+        <button *ngIf="inSuperteam" class="remove-btn" (click)="removeHero(hero.id)">
+            <span>-</span>
+            Retirer
+        </button>
+    </div>
+</div>

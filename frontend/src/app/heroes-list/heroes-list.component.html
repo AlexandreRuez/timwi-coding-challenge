@@ -1,0 +1,14 @@
+<div class="list"       
+infiniteScroll
+[infiniteScrollDistance]="0.5"
+[infiniteScrollUpDistance]="2"
+[infiniteScrollThrottle]="100"
+(scrolled)="onScrollDown()"
+(scrolledUp)="onScrollUp()">
+    <div>
+        <input value=""  class="form-control" [(ngModel)]="name" placeholder="Name">
+        <input value=""  class="form-control" [(ngModel)]="stories" placeholder="Stories">
+        <button (click)="search()"> Rechercher </button>
+    </div>
+    <app-card *ngFor="let hero of heroesList" [hero]="hero" [userConnected]="userConnected"></app-card>
+</div>

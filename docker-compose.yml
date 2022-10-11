@@ -1,0 +1,70 @@
+version: "3.3"
+
+services:
+  frontend:
+    container_name: frontend
+    image: node:16-alpine
+    restart: on-failure
+    command:
+          sh -c "cd frontend && echo '$PWD' && npm install && npm start"
+    working_dir: /frontend
+    ports:
+      - 4200:4200
+    volumes:
+      - ./:/frontend
+    environment:
+      API_PORT: ${API_PORT}
+      MARVEL_API_URL: ${MARVEL_API_URL}
+      MARVEL_PUBLIC_KEY: ${MARVEL_PUBLIC_KEY}
+      MARVEL_PRIVATE_KEY: ${MARVEL_PRIVATE_KEY}
+
+  backend:
+    container_name: backend
+    image: node:16-alpine
+    restart: on-failure
+    links:
+      - mysql
+    depends_on:
+      - mysql
+    command:
+          sh -c "cd backend && echo '$PWD' && npm install && node server.js"
+    working_dir: /backend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/backend
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_KEY: ${JWT_KEY}
+
+  mysql:
+    build: .
+    container_name: mysql
+    image: mysql:5.7
+    restart: on-failure
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_volume:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: marvel
+    expose:
+      - "3307"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "82:80"
+    volumes:
+      - phpmyadmin-volume:/etc/phpmyadmin/config.user.inc.php
+    links:
+      - mysql:db
+
+volumes:
+  mysql_volume: {}
+  phpmyadmin-volume: {}
