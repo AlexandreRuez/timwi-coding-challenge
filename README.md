@@ -50,11 +50,11 @@ npm start
 
 ### Génération d'un token
 
-Vous devez générer vos clés d'API pour [l'API Marvel](https://developer.marvel.com/documentation/getting_started). Il faudra ensuite les saisir dans install.sh.
+Vous devez générer vos clés d'API pour [l'API Marvel](https://developer.marvel.com/documentation/getting_started). Il faudra ensuite les saisir dans \frontend\src\environments\environment.ts.
 
 ```shell
-export MARVEL_PUBLIC_KEY='MARVEL_PUBLIC_KEY'
-export MARVEL_PRIVATE_KEY='MARVEL_PRIVATE_KEY'
+    marvelPublicKey :"MARVEL_PUBLIC_KEY",
+    marvelPrivateKey :"MARVEL_PRIVATE_KEY"
 ```
 
 ### Docker-compose

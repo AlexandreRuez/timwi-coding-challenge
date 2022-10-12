@@ -12,11 +12,6 @@ services:
       - 4200:4200
     volumes:
       - ./:/frontend
-    environment:
-      API_PORT: ${API_PORT}
-      MARVEL_API_URL: ${MARVEL_API_URL}
-      MARVEL_PUBLIC_KEY: ${MARVEL_PUBLIC_KEY}
-      MARVEL_PRIVATE_KEY: ${MARVEL_PRIVATE_KEY}
 
   backend:
     container_name: backend
