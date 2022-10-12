@@ -5,6 +5,7 @@ import { HeroesListComponent } from './heroes-list/heroes-list.component';
 import { SuperteamComponent } from './superteam/superteam/superteam.component';
 
 const routes: Routes = [
+  { path: "", redirectTo: "/heroes", pathMatch: "full" },
   { path: 'heroes', component: HeroesListComponent },
   { path: 'superteam', component: SuperteamComponent, canActivate: [AuthenticationGuard] }
 ];
