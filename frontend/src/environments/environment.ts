@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  AppApiUrl : "http://localshost:3000/",
+  AppApiUrl : "http://localhost:3000/",
   marvelApiUrl :"https://gateway.marvel.com:443/v1/public/",
   marvelPublicKey :"MARVEL_PUBLIC_KEY",
   marvelPrivateKey :"MARVEL_PRIVATE_KEY"
