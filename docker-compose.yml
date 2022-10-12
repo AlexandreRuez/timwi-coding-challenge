@@ -45,6 +45,7 @@ services:
       - "3307:3306"
     volumes:
       - mysql_volume:/var/lib/mysql
+      - "./setup.sql:/docker-entrypoint-initdb.d/1.sql"
     environment: 
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: marvel
