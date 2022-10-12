@@ -8,7 +8,6 @@ exports.addHero = (req, res, next) => {
     });
   }
   User_as_Heroes.get(req.body.id_hero, req.userData.userId, (err, data) => {
-    console.log(data);
     if (err) {
         return res.status(500).send({
         message:
@@ -45,7 +44,6 @@ exports.addHero = (req, res, next) => {
 
 exports.getAllHeroes = (req, res, next) => {
     User_as_Heroes.getAll(req.userData.userId, (err, data) => {
-        console.log(data);
         if (err)
         return res.status(500).send({
           message:
@@ -61,7 +59,6 @@ exports.getAllHeroes = (req, res, next) => {
 
 exports.getHero = (req, res, next) => {
     User_as_Heroes.get(req.params.id, req.userData.userId, (err, data) => {
-        console.log(data);
         if (err)
         return res.status(500).send({
           message:
@@ -84,7 +81,6 @@ exports.getHero = (req, res, next) => {
 
 exports.removeHero = (req, res, next) => {
     User_as_Heroes.remove(req.params.id, req.userData.userId, (err, data) => {
-        console.log(data);
         if (err)
         return res.status(500).send({
           message:

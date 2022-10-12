@@ -27,9 +27,7 @@ exports.user_signup = (req, res, next) => {
               error: err
             });
           } else {
-            console.log("salt : ",salt);
         bcrypt.hash(req.body.password, salt, (err, hash) => {
-          console.log("hash : ",hash);
           if (err) {
             return res.status(500).json({
               error: err

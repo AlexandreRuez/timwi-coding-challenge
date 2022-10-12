@@ -11,12 +11,10 @@ const User = function(user) {
 User.create = (newUser, result) => {
   sql.query("INSERT INTO users SET ?", newUser, (err, res) => {
     if (err) {
-      console.log("error: ", err);
       result(err, null);
       return;
     }
 
-    console.log("created user: ", { id: res.insertId, ...newUser });
     result(null, { id: res.insertId, ...newUser });
   });
 };
@@ -24,13 +22,11 @@ User.create = (newUser, result) => {
 User.findById = (id, result) => {
   sql.query(`SELECT * FROM users WHERE id = ${id}`, (err, res) => {
     if (err) {
-      console.log("error: ", err);
       result(err, null);
       return;
     }
 
     if (res.length) {
-      console.log("found user: ", res[0]);
       result(null, res[0]);
       return;
     }
@@ -39,21 +35,18 @@ User.findById = (id, result) => {
   });
 };
 
-User.getAll = (user, result) => {
+User.getAll = (email, result) => {
   let query = "SELECT * FROM users";
 
-  if (user) {
-    query += ` WHERE user LIKE '%${user}%'`;
+  if (email) {
+    query += ` WHERE email LIKE '%${email}%'`;
   }
 
   sql.query(query, (err, res) => {
     if (err) {
-      console.log("error: ", err);
       result(null, err);
       return;
     }
-
-    console.log("users: ", res);
     result(null, res);
   });
 };
@@ -64,7 +57,6 @@ User.updateById = (id, user, result) => {
     [user.user, user.description, user.published, id],
     (err, res) => {
       if (err) {
-        console.log("error: ", err);
         result(null, err);
         return;
       }
@@ -74,7 +66,6 @@ User.updateById = (id, user, result) => {
         return;
       }
 
-      console.log("updated user: ", { id: id, ...user });
       result(null, { id: id, ...user });
     }
   );
@@ -83,7 +74,6 @@ User.updateById = (id, user, result) => {
 User.remove = (id, result) => {
   sql.query("DELETE FROM users WHERE id = ?", id, (err, res) => {
     if (err) {
-      console.log("error: ", err);
       result(null, err);
       return;
     }
@@ -93,7 +83,6 @@ User.remove = (id, result) => {
       return;
     }
 
-    console.log("deleted user with id: ", id);
     result(null, res);
   });
 };

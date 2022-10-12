@@ -4,7 +4,7 @@
   "description": "API for Marvel Timwi app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./api/tests/user.spec.js"
   },
   "author": "Alexandre Ruez",
   "license": "ISC",
@@ -16,5 +16,10 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "supertest": "^6.3.0",
+    "mocha": "^9.0.0"
   }
 }
